@@ -1,0 +1,21 @@
+<div class="p-20">
+  <mc-backend-error-messages *ngIf="validationErorrs$ | async" [backendErrors]="validationErorrs$ | async">
+  </mc-backend-error-messages>
+  <br>
+  <form [formGroup]="form" (ngSubmit)="registerFormSubmit()">
+    <div class="form-group mb-6">
+      <input type="text" class="input input-bordered w-full " formControlName="username" id="username"
+        aria-describedby="username" placeholder="User Name">
+    </div>
+    <div class="form-group mb-6">
+      <input type="email" class="input input-bordered w-full" formControlName="email" id="email"
+        placeholder="Email address">
+    </div>
+    <div class="form-group mb-6">
+      <input type="password" class="input input-bordered w-full" formControlName="password" id="password"
+        placeholder="Password">
+    </div>
+    <button [ngClass]="{ 'loading': isSubmitting$ | async }" [disabled]="!form.valid" type="submit"
+      class="btn w-full">Sign up</button>
+  </form>
+</div>
